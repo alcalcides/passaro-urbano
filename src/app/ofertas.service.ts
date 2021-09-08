@@ -59,7 +59,16 @@ export class OfertasService {
 
     public getOfertas2(): Promise<Oferta[]> {        
         return new Promise((resolve, reject) => {
-            resolve( this.ofertas )
+            let deuCerto:boolean = false
+
+            if(deuCerto)            
+                resolve( this.ofertas )
+            else {
+                reject({
+                    codigoDeErro: 404,
+                    mensagemDeErro: "Servidor não encontrado"
+                })
+            }
         })
     }
 
