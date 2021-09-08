@@ -70,6 +70,14 @@ export class OfertasService {
           mensagemDeErro: 'Servidor não encontrado',
         });
       }
-    });
+    })
+      .then((ofertas: any) => {
+        console.log('primeiro then');
+        return ofertas;
+      })
+      .then((ofertas: any) => {
+        console.log('segundo then');
+        return ofertas;
+      });
   }
 }
