@@ -2,7 +2,7 @@ import { Oferta } from "./shared/oferta.model";
 
 export class OfertasService {
 
-    public oferta: Oferta[] = [
+    public ofertas: Oferta[] = [
         {
             id: 1,
             categoria: "restaurante",
@@ -54,7 +54,13 @@ export class OfertasService {
     ]
 
     public getOfertas(): Array<Oferta> {
-        return this.oferta;
-
+        return this.ofertas;
     }
+
+    public getOfertas2(): Promise<Oferta[]> {        
+        return new Promise((resolve, reject) => {
+            resolve( this.ofertas )
+        })
+    }
+
 }
