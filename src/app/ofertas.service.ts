@@ -77,7 +77,14 @@ export class OfertasService {
       })
       .then((ofertas: any) => {
         console.log('segundo then');
-        return ofertas;
-      });
+        return new Promise((resolve2, reject2) => {
+            setTimeout(() => {
+                resolve2(ofertas)
+            }, 2000)
+        })
+      }).then((ofertas: any) => {
+          console.log("terceiro then executado após 2 segundos");
+          return ofertas;
+      })
   }
 }
