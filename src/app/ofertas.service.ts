@@ -18,6 +18,14 @@ export class OfertasService {
       .get(`http://localhost:3000/ofertas?categoria=${categoria}`)
       .toPromise()
       .then((resposta: any) => resposta);
+  }
 
+  public getOfertaPorId(id: number): Promise<Oferta> {
+    return this.http
+      .get(`http://localhost:3000/ofertas?id=${id}`)
+      .toPromise()
+      .then((resposta: any) => {
+        return resposta[0];
+      });
   }
 }
