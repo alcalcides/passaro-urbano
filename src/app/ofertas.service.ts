@@ -1,6 +1,11 @@
 import { Oferta } from './shared/oferta.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
+@Injectable()
 export class OfertasService {
+  constructor(private http: HttpClient) {}
+
   public ofertas: Oferta[] = [
     {
       id: 1,
@@ -78,13 +83,14 @@ export class OfertasService {
       .then((ofertas: any) => {
         console.log('segundo then');
         return new Promise((resolve2, reject2) => {
-            setTimeout(() => {
-                resolve2(ofertas)
-            }, 2000)
-        })
-      }).then((ofertas: any) => {
-          console.log("terceiro then executado após 2 segundos");
-          return ofertas;
+          setTimeout(() => {
+            resolve2(ofertas);
+          }, 2000);
+        });
       })
+      .then((ofertas: any) => {
+        console.log('terceiro then executado após 2 segundos');
+        return ofertas;
+      });
   }
 }
