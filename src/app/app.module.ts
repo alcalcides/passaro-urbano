@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { DiversaoComponent } from './diversao/diversao.component';
 import { RestaurantesComponent } from './restaurantes/restaurantes.component';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { RestaurantesComponent } from './restaurantes/restaurantes.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]
