@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, interval, Observer } from 'rxjs';
+import { Observable, interval, Observer, Subscription } from 'rxjs';
 import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
 
@@ -10,7 +10,10 @@ import { Oferta } from '../shared/oferta.model';
   styleUrls: ['./oferta.component.css'],
   providers: [OfertasService],
 })
-export class OfertaComponent implements OnInit {
+export class OfertaComponent implements OnInit, OnDestroy {
+  private tempoObservableSubscription!: Subscription;
+  private meuObersableTesteSubscription!: Subscription;
+
   public oferta!: Oferta;
 
   constructor(
@@ -36,27 +39,30 @@ export class OfertaComponent implements OnInit {
     //   }
     // );
 
-    // let tempo = interval(2000)
-    // tempo.subscribe((intervalo: number) => {
-    //   console.log(intervalo)
-    // })
+    let tempo = interval(2000);
+    this.tempoObservableSubscription = tempo.subscribe((intervalo: number) => {
+      console.log(intervalo);
+    });
 
     // obervable (observável)
     let meuObersableTeste = new Observable((observer: Observer<number>) => {
-        observer.next(1)
-        observer.next(2)
-        observer.next(3)
-        observer.complete()
-        observer.next(5)
-    })
-
+      observer.next(1);
+      observer.next(2);
+      observer.next(3);
+      observer.complete();
+      observer.next(5);
+    });
 
     // obervable (observável)
-    meuObersableTeste.subscribe(
+    this.meuObersableTesteSubscription = meuObersableTeste.subscribe(
       (resultado: number) => console.log(resultado),
       (error: string) => console.log(error),
-      () => console.log("stream de eventos está completa")
-    )
+      () => console.log('stream de eventos está completa')
+    );
+  }
 
+  ngOnDestroy(): void {
+    this.meuObersableTesteSubscription.unsubscribe();
+    this.tempoObservableSubscription.unsubscribe();
   }
 }
