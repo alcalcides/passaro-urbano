@@ -12,7 +12,8 @@
             type="text"
             class="form-control"
             placeholder="Pesquise por ofertas"
-            (keyup)="pesquisa($event)"
+            #termoDaPesquisa
+            (keyup)="pesquisa(termoDaPesquisa.value)"
           />
         </div>
         <div class="col-md-2">
