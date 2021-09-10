@@ -6,20 +6,22 @@ import { OfertasService } from 'src/app/ofertas.service';
   selector: 'app-onde-fica',
   templateUrl: './onde-fica.component.html',
   styleUrls: ['./onde-fica.component.css'],
-  providers: [OfertasService],
+  providers: [OfertasService]
 })
 export class OndeFicaComponent implements OnInit {
-  public ondeFica: string = "";
+
+  public ondeFica: string = ''
+
   constructor(
-    private route: ActivatedRoute,
+    private route: ActivatedRoute, 
     private ofertasService: OfertasService
-  ) {}
+) { }
 
   ngOnInit(): void {
-    let id = this.route.parent?.snapshot.params['id'];
-    this.ofertasService.getOndeFicaOfertaPorId(id)
-      .then((resposta: any) => {
-        this.ondeFica = resposta;
-      })
+    this.ofertasService.getOndeFicaOfertaPorId(this.route.parent?.snapshot.params['id']) 
+      .then((descricao: string) => {
+        this.ondeFica = descricao
+      })   
   }
+
 }

@@ -1,16 +1,16 @@
 <div class="container">
+  
   <div class="secao">
-    <h3 class="text-center">
-      Rodízios, Buffet, Carnes Especiais, Feijoada e mais!
-    </h3>
+    <h3 class="text-center">Rodízios, Buffet, Carnes Especiais, Feijoada e mais!</h3>
     <h5 class="text-center">Conheça as melhores ofertas de restaurantes:</h5>
   </div>
 
   <hr />
 
-  <div class="row" *ngFor="let oferta of ofertas">
+  <div *ngFor="let oferta of ofertas">
+  <div class="row">
     <div class="col-md-4">
-      <img [src]="oferta.imagens[0].url" class="img-fluid"/>
+      <img [src]="oferta.imagens[0].url" class="img-fluid" />
     </div>
 
     <div class="col-md-8">
@@ -23,9 +23,7 @@
       </div>
 
       <div class="row">
-        <p>
-          Anunciado por: <b>{{ oferta.anunciante }}</b>
-        </p>
+        <p>Anunciado por: <b>{{ oferta.anunciante }}r</b></p>
       </div>
 
       <div class="row">
@@ -33,16 +31,11 @@
       </div>
 
       <div class="row">
-        <button
-          class="btn btn-outline-success"
-          [routerLink]="['/oferta', oferta.id]"
-        >
-          Ver oferta
-        </button>
+        <button class="btn btn-outline-success" [routerLink]="['/oferta', oferta.id]" >Ver oferta</button>
       </div>
     </div>
-    <hr class="my-4" />
   </div>
-
+  <hr />
+</div>
   <hr />
 </div>

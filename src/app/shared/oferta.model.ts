@@ -6,5 +6,8 @@ export class Oferta {
     public anunciante!: string
     public valor!: number
     public destaque!: boolean
-    public imagens!: Array<{url: string}>
+    public imagens!: Array<{url:string}>   
 }
+
+
+
