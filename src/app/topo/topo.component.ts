@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
 
@@ -11,24 +12,40 @@ import { Oferta } from '../shared/oferta.model';
 })
 export class TopoComponent implements OnInit {
   public ofertas!: Observable<Oferta[]>;
+  private subjetcPesquisa: Subject<string> = new Subject<string>();
 
   constructor(private ofertasService: OfertasService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.ofertas = this.subjetcPesquisa
+      .pipe(debounceTime(1000))
+      .pipe(distinctUntilChanged())
+      .pipe(
+        switchMap((termo: string) => {
+          console.log('requisição http para a api');
 
-  // public pesquisa(termoDaBusca: string): void {
-  //   this.ofertas = this.ofertasService.pesquisaOfertas(termoDaBusca);
-  //   this.ofertas.subscribe(
-  //     (data: Oferta[]) => console.log(data);
-  //   )
-  // }
+          if (termo.trim() === '') {
+            return of<Oferta[]>([]);
+          }
+
+          return this.ofertasService.pesquisaOfertas(termo);
+        })
+      );
+
+    this.ofertas.subscribe((ofertas: Oferta[]) =>
+      console.log('ofertas: ', ofertas)
+    );
+  }
 
   public pesquisa(termoDaBusca: string): void {
-    this.ofertas = this.ofertasService.pesquisaOfertas(termoDaBusca);
-    this.ofertas.subscribe(
-      (ofertas: Oferta[]) => console.log(ofertas),
-      (erro: any) => console.log('Erro status: ', erro.status),
-      () => console.log('fluxo de evento completo')
-    );
+    console.log('key up caractere: ', termoDaBusca);
+    this.subjetcPesquisa.next(termoDaBusca);
+
+    // this.ofertas = this.ofertasService.pesquisaOfertas(termoDaBusca);
+    // this.ofertas.subscribe(
+    //   (ofertas: Oferta[]) => console.log(ofertas),
+    //   (erro: any) => console.log('Erro status: ', erro.status),
+    //   () => console.log('fluxo de evento completo')
+    // );
   }
 }
