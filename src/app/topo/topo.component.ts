@@ -10,8 +10,8 @@ import { Oferta } from '../shared/oferta.model';
   providers: [OfertasService],
 })
 export class TopoComponent implements OnInit {
-  public ofertas!: Observable<Oferta[]>
-  
+  public ofertas!: Observable<Oferta[]>;
+
   constructor(private ofertasService: OfertasService) {}
 
   ngOnInit(): void {}
@@ -24,10 +24,11 @@ export class TopoComponent implements OnInit {
   // }
 
   public pesquisa(termoDaBusca: string): void {
-    this.ofertas = this.ofertasService.pesquisaOfertas(termoDaBusca)
+    this.ofertas = this.ofertasService.pesquisaOfertas(termoDaBusca);
     this.ofertas.subscribe(
       (ofertas: Oferta[]) => console.log(ofertas),
-      (erro: any) => console.log("Erro status: ", erro.status)
-      )
+      (erro: any) => console.log('Erro status: ', erro.status),
+      () => console.log('fluxo de evento completo')
+    );
   }
 }
