@@ -3,18 +3,35 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-ordem-compra',
   templateUrl: './ordem-compra.component.html',
-  styleUrls: ['./ordem-compra.component.css']
+  styleUrls: ['./ordem-compra.component.css'],
 })
 export class OrdemCompraComponent implements OnInit {
+  public endereco: string = '';
+  public numero: string = '';
+  public complemento: string = '';
+  public formaPagamento: string = '';
 
-  public endereco:string = 'Rua xyz'
-  public numero:number = 10
-  public complemento: string = 'Casa B'
-  public formaPagamento: string = ''
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  public atualizaEndereco(endereco: string): void {
+    this.endereco = endereco;
+    console.log(endereco);
   }
 
+  public atualizaNumero(numero: string): void {
+    this.numero = numero;
+    console.log(numero);
+  }
+
+  public atualizaComplemento(complemento: string): void {
+    this.complemento = complemento;
+    console.log(complemento);
+  }
+
+  public atualizaFormaPagamento(formaPagamento: string): void {
+    this.formaPagamento = formaPagamento;
+    console.log(formaPagamento);
+  }
 }

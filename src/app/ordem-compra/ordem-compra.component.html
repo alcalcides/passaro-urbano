@@ -77,6 +77,8 @@
                minlength="5" 
                required
                [value]="endereco"
+               #inputEndereco
+               (input)="atualizaEndereco(inputEndereco.value)"
                >
           <div class="invalid-feedback">Endereço inválido</div>
         </div>
@@ -90,6 +92,8 @@
               minlength="1" 
               required
               [value]="numero"
+              #inputNumero
+              (input)="atualizaNumero(inputNumero.value)"
               >
           <small class="form-text text-muted">Ok</small>
         </div>
@@ -101,6 +105,8 @@
               placeholder="Complemento" 
               autocomplete="off"
               [value]="complemento"
+              #inputComplemento
+              (input)="atualizaComplemento(inputComplemento.value)"
               >
         </div>
 
@@ -113,7 +119,11 @@
       <div class="form-row">
           
         <div class="form-group col-md-3">
-          <select class="form-control is-invalid">
+          <select 
+            class="form-control is-invalid"
+            #selectFormaPagamento
+            (change)="atualizaFormaPagamento(selectFormaPagamento.value)"
+            >
             <option>Selecione uma opção</option>
             <option value="dinheiro" selected="{{ formaPagamento == 'dinheiro' ? 'selected' : '' }}">Dinheiro</option>
             <option value="debito"selected="{{ formaPagamento == 'debito' ? 'selected' : '' }}">Débito</option>
