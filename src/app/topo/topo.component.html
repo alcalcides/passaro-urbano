@@ -15,7 +15,7 @@
             #termoDaPesquisa
             (keyup)="pesquisa(termoDaPesquisa.value)"
           />
-          <ul class="list-group" style="position: absolute">
+          <ul class="list-group" style="position: absolute; z-index: 999;" (click)="limpaPesquisa()">
             <li class="list-group-item" *ngFor="let oferta of ofertas | async">
               <a [routerLink]="['/oferta', oferta.id]" >
                 {{ oferta.titulo | descricaoReduzida: 15 }}
