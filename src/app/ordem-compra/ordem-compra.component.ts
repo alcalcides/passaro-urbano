@@ -7,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdemCompraComponent implements OnInit {
 
-  public endereco: string = "";
-  public numero!: number;
-  public complemento: string = "";
-  public formaPagamento: string = "";
-  
+  public endereco:string = 'Rua xyz'
+  public numero:number = 10
+  public complemento: string = 'Casa B'
+  public formaPagamento: string = ''
+
   constructor() { }
 
   ngOnInit(): void {
