@@ -17,7 +17,6 @@ import { Oferta } from '../shared/oferta.model';
 })
 export class TopoComponent implements OnInit {
   public ofertas!: Observable<Oferta[]>;
-  public ofertas2!: Oferta[];
   private subjetcPesquisa: Subject<string> = new Subject<string>();
 
   constructor(private ofertasService: OfertasService) {}
@@ -28,7 +27,6 @@ export class TopoComponent implements OnInit {
       .pipe(distinctUntilChanged())
       .pipe(
         switchMap((termo: string) => {
-          console.log('requisição http para a api');
 
           if (termo.trim() === '') {
             return of<Oferta[]>([]);
@@ -39,26 +37,14 @@ export class TopoComponent implements OnInit {
       )
       .pipe(
         catchError((err: any) => {
-          console.log(err);
           return of<Oferta[]>([]);
         })
       );
 
-    this.ofertas.subscribe((ofertas: Oferta[]) => {
-      console.log(ofertas);
-      this.ofertas2 = ofertas;
-    });
   }
 
   public pesquisa(termoDaBusca: string): void {
-    console.log('key up caractere: ', termoDaBusca);
     this.subjetcPesquisa.next(termoDaBusca);
 
-    // this.ofertas = this.ofertasService.pesquisaOfertas(termoDaBusca);
-    // this.ofertas.subscribe(
-    //   (ofertas: Oferta[]) => console.log(ofertas),
-    //   (erro: any) => console.log('Erro status: ', erro.status),
-    //   () => console.log('fluxo de evento completo')
-    // );
   }
 }
