@@ -191,14 +191,21 @@
               <small class="form-text text-success">Ok</small>
             </div>
             <ng-template #msgFormaPagamentoInvalida>
-              <small class="form-text text-danger">Selecione uma forma de pagamento</small>
+              <small class="form-text text-danger"
+                >Selecione uma forma de pagamento</small
+              >
             </ng-template>
           </div>
         </div>
       </div>
 
       <hr />
-      <button type="submit" class="btn btn-primary btn-lg" [disabled]="formEstado" >
+      <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        [disabled]="formEstado"
+        (click)="confirmarCompra()"
+      >
         Confirmar compra
       </button>
     </form>
