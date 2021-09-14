@@ -20,6 +20,7 @@ import { registerLocaleData } from '@angular/common';
 import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
+import { FormsModule } from '@angular/forms';
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
@@ -41,9 +42,10 @@ registerLocaleData(localePt, 'pt-BR');
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    FormsModule
   ],
-  providers: [ 
+  providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]
