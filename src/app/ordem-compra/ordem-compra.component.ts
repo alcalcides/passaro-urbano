@@ -28,6 +28,8 @@ export class OrdemCompraComponent implements OnInit {
 
   public pedido: Pedido = new Pedido('', '', '', '');
 
+  public idPedidoCompra!: number;
+
   constructor(private ordemCompraService: OrdemCompraService) {}
 
   ngOnInit(): void {
@@ -81,6 +83,8 @@ export class OrdemCompraComponent implements OnInit {
     this.pedido.numero = this.numero;
     this.pedido.complemento = this.complemento;
     this.pedido.formaPagamento = this.formaPagamento;
-    this.ordemCompraService.efetivarCompra(this.pedido).subscribe();
+    this.ordemCompraService.efetivarCompra(this.pedido).subscribe((idPedido: number) => {
+      console.log(idPedido);
+    });
   }
 }

@@ -192,6 +192,20 @@
       "complemento": "perto daqui",
       "formaPagamento": "debito",
       "id": 1
+    },
+    {
+      "endereco": "teste",
+      "numero": "5",
+      "complemento": "asdf",
+      "formaPagamento": "debito",
+      "id": 2
+    },
+    {
+      "endereco": "teste",
+      "numero": "1234",
+      "complemento": "cccc",
+      "formaPagamento": "dinheiro",
+      "id": 3
     }
   ]
 }
