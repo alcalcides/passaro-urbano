@@ -11,27 +11,32 @@ export class OrdemCompraComponent implements OnInit {
   public complemento: string = '';
   public formaPagamento: string = '';
 
+  public enderecoValido!: boolean;
+  public numeroValido!: boolean;
+  public complementoValido!: boolean;
+  public formaPagamentoValido!: boolean;
+
   constructor() {}
 
   ngOnInit(): void {}
 
   public atualizaEndereco(endereco: string): void {
     this.endereco = endereco;
-    console.log(endereco);
+    this.enderecoValido = this.endereco.length > 3 ? true : false;
   }
 
   public atualizaNumero(numero: string): void {
     this.numero = numero;
-    console.log(numero);
+    this.numeroValido = this.numero.length >= 1 ? true : false;
   }
 
   public atualizaComplemento(complemento: string): void {
     this.complemento = complemento;
-    console.log(complemento);
+    this.complementoValido = this.complemento.length >= 1 ? true : false;
   }
 
   public atualizaFormaPagamento(formaPagamento: string): void {
     this.formaPagamento = formaPagamento;
-    console.log(formaPagamento);
+    this.formaPagamentoValido = this.formaPagamento === 'dinheiro' || this.formaPagamento === 'debito'  ? true : false;
   }
 }
