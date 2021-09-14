@@ -213,6 +213,12 @@
       "complemento": "asdf",
       "formaPagamento": "dinheiro",
       "id": 4
+    },
+    {
+      "endereco": "rua tal",
+      "numero": "23",
+      "formaPagamento": "dinheiro",
+      "id": 5
     }
   ]
 }
