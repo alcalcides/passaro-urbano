@@ -219,6 +219,12 @@
       "numero": "23",
       "formaPagamento": "dinheiro",
       "id": 5
+    },
+    {
+      "endereco": "eeee",
+      "numero": "43",
+      "formaPagamento": "debito",
+      "id": 6
     }
   ]
 }
