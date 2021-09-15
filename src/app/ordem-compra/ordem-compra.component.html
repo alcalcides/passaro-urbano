@@ -1,13 +1,19 @@
 <div class="container">
   <div class="ordem-compra">
-    <form [formGroup]=formulario (ngSubmit)="confirmarCompra()" novalidate>
-
+    <form [formGroup]="formulario" (ngSubmit)="confirmarCompra()" novalidate>
       <h5>Sua Compra</h5>
       <hr />
 
-      <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
+      <div
+        class="form-row"
+        style="
+          background: #fafafa;
+          padding: 20px;
+          border-bottom: solid 1px #f0f0f0;
+        "
+      >
         <div class="form-group col-sm-1">
-          <img src="/assets/ofertas/1/img1.jpg" class="img-fluid">
+          <img src="/assets/ofertas/1/img1.jpg" class="img-fluid" />
         </div>
         <div class="form-group col-sm-6">
           Super Burger
@@ -25,14 +31,19 @@
           </div>
         </div>
 
-        <div class="form-group col-sm-3 d-flex justify-content-end">
-          29.90
-        </div>
+        <div class="form-group col-sm-3 d-flex justify-content-end">29.90</div>
       </div>
 
-      <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
+      <div
+        class="form-row"
+        style="
+          background: #fafafa;
+          padding: 20px;
+          border-bottom: solid 1px #f0f0f0;
+        "
+      >
         <div class="form-group col-sm-1">
-          <img src="/assets/ofertas/4/img1.jpg" class="img-fluid">
+          <img src="/assets/ofertas/4/img1.jpg" class="img-fluid" />
         </div>
         <div class="form-group col-sm-6">
           Estância das águas
@@ -50,9 +61,7 @@
           </div>
         </div>
 
-        <div class="form-group col-sm-3 d-flex justify-content-end">
-          31.90
-        </div>
+        <div class="form-group col-sm-3 d-flex justify-content-end">31.90</div>
       </div>
 
       <div class="form-row">
@@ -66,7 +75,6 @@
       <hr />
 
       <div class="form-row">
-
         <div class="form-group col-md-6">
           <input
             type="text"
@@ -74,8 +82,23 @@
             placeholder="Endereço"
             autocomplete="off"
             formControlName="endereco"
+          />
+          <small
+            *ngIf="
+              formulario.get('endereco')?.valid &&
+              formulario.get('endereco')?.touched
+            "
+            class="form-text text-success"
+            >Ok</small
           >
-          <small class="form-text text-success">Ok</small>
+          <small
+            *ngIf="
+              !formulario.get('endereco')?.valid &&
+              formulario.get('endereco')?.touched
+            "
+            class="form-text text-danger"
+            >Endereço inválido</small
+          >
         </div>
 
         <div class="form-group col-md-2">
@@ -85,8 +108,23 @@
             placeholder="Número"
             autocomplete="off"
             formControlName="numero"
+          />
+          <small
+            *ngIf="
+              formulario.get('numero')?.valid &&
+              formulario.get('numero')?.touched
+            "
+            class="form-text text-success"
+            >Ok</small
           >
-          <small class="form-text text-success">Ok</small>
+          <small
+            *ngIf="
+              !formulario.get('numero')?.valid &&
+              formulario.get('numero')?.touched
+            "
+            class="form-text text-danger"
+            >Número inválido</small
+          >
         </div>
 
         <div class="form-group col-md-4">
@@ -96,9 +134,8 @@
             placeholder="Complemento"
             autocomplete="off"
             formControlName="complemento"
-          >
+          />
         </div>
-
       </div>
       <br />
 
@@ -106,25 +143,35 @@
       <hr />
 
       <div class="form-row">
-
         <div class="form-group col-md-3">
-          <select
-            class="form-control"
-            formControlName="formaPagamento"
-          >
+          <select class="form-control" formControlName="formaPagamento">
             <option value="">Selecione uma opção</option>
             <option value="dinheiro">Dinheiro</option>
             <option value="debito">Débito</option>
           </select>
-          <small class="form-text text-success">Ok</small>
+          <small
+            *ngIf="
+              formulario.get('formaPagamento')?.valid &&
+              formulario.get('formaPagamento')?.touched
+            "
+            class="form-text text-success"
+            >Ok</small
+          >
+          <small
+            *ngIf="
+              !formulario.get('formaPagamento')?.valid &&
+              formulario.get('formaPagamento')?.touched
+            "
+            class="form-text text-danger"
+            >Escolha uma forma de pagamento</small
+          >
         </div>
       </div>
 
       <hr />
-      <button
-        type="submit"
-        class="btn btn-primary btn-lg"
-      >Confirmar compra</button>
+      <button type="submit" class="btn btn-primary btn-lg">
+        Confirmar compra
+      </button>
     </form>
   </div>
 </div>

@@ -19,7 +19,7 @@ export class OrdemCompraComponent implements OnInit {
     numero: new FormControl(null, [
       Validators.required,
       Validators.minLength(1),
-      Validators.maxLength(20),
+      Validators.maxLength(8),
     ]),
     complemento: new FormControl(null),
     formaPagamento: new FormControl(null, [Validators.required]),
