@@ -55,7 +55,8 @@ export class OrdemCompraComponent implements OnInit {
           this.formulario.value.endereco,
           this.formulario.value.numero,
           this.formulario.value.complemento,
-          this.formulario.value.formaPagamento
+          this.formulario.value.formaPagamento,
+          this.carrinhoService.exibirItens()
         );
         this.ordemCompraService
           .efetivarCompra(pedido)
