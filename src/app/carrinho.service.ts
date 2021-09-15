@@ -33,6 +33,33 @@ class CarrinhoService {
       0
     );
   }
+
+  public adicionarQuantidade(itemCarrinho: ItemCarrinho): void {
+    console.log(itemCarrinho);
+
+    let itemCarrinhoEncontrado = this.itens.find(
+      (item: ItemCarrinho) => item.id === itemCarrinho.id
+    );
+
+    if(itemCarrinhoEncontrado) {
+      itemCarrinhoEncontrado.quantidade++;
+    }
+
+  }
+
+  public diminuirQuantidade(itemCarrinho: ItemCarrinho): void {
+    console.log(itemCarrinho);
+
+    let itemCarrinhoEncontrado = this.itens.find(
+      (item: ItemCarrinho) => item.id === itemCarrinho.id
+    );
+
+    if(itemCarrinhoEncontrado) {
+      itemCarrinhoEncontrado.quantidade--;
+    }
+
+  }
+
 }
 
 export { CarrinhoService };
