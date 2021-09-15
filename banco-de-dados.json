@@ -239,6 +239,13 @@
       "complemento": "qwer",
       "formaPagamento": "dinheiro",
       "id": 8
+    },
+    {
+      "endereco": "qwer",
+      "numero": "4",
+      "complemento": null,
+      "formaPagamento": "debito",
+      "id": 9
     }
   ]
 }
