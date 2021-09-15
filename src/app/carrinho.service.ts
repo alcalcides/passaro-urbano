@@ -20,11 +20,18 @@ class CarrinhoService {
     let itemCarrinhoEncontrado = this.itens.find(
       (item: ItemCarrinho) => item.id === itemCarrinho.id
     );
-    if(itemCarrinhoEncontrado) {
+    if (itemCarrinhoEncontrado) {
       itemCarrinhoEncontrado.quantidade++;
     } else {
       this.itens.push(itemCarrinho);
     }
+  }
+
+  public totalCarrinhoCompras(): number {
+    return this.itens.reduce(
+      (acc, current) => (acc += current.quantidade * current.valor),
+      0
+    );
   }
 }
 
