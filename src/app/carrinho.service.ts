@@ -41,10 +41,9 @@ class CarrinhoService {
       (item: ItemCarrinho) => item.id === itemCarrinho.id
     );
 
-    if(itemCarrinhoEncontrado) {
+    if (itemCarrinhoEncontrado) {
       itemCarrinhoEncontrado.quantidade++;
     }
-
   }
 
   public diminuirQuantidade(itemCarrinho: ItemCarrinho): void {
@@ -54,15 +53,17 @@ class CarrinhoService {
       (item: ItemCarrinho) => item.id === itemCarrinho.id
     );
 
-    if(itemCarrinhoEncontrado) {
+    if (itemCarrinhoEncontrado) {
       itemCarrinhoEncontrado.quantidade--;
-      if(itemCarrinhoEncontrado.quantidade === 0) {
-        this.itens.splice(this.itens.indexOf(itemCarrinhoEncontrado) , 1);
+      if (itemCarrinhoEncontrado.quantidade === 0) {
+        this.itens.splice(this.itens.indexOf(itemCarrinhoEncontrado), 1);
       }
     }
-
   }
 
+  public limparCarrinho(): void {
+    this.itens = [];
+  }
 }
 
 export { CarrinhoService };
