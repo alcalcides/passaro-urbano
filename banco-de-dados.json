@@ -232,6 +232,13 @@
       "complemento": null,
       "formaPagamento": "debito",
       "id": 7
+    },
+    {
+      "endereco": "rewq",
+      "numero": "4",
+      "complemento": "qwer",
+      "formaPagamento": "dinheiro",
+      "id": 8
     }
   ]
 }
