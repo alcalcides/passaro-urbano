@@ -10,6 +10,8 @@ import { Pedido } from '../shared/pedido.model';
   providers: [OrdemCompraService],
 })
 export class OrdemCompraComponent implements OnInit {
+  public idPedidoCompra!: number;
+
   public formulario: FormGroup = new FormGroup({
     endereco: new FormControl(null, [
       Validators.required,
@@ -30,6 +32,14 @@ export class OrdemCompraComponent implements OnInit {
   ngOnInit() {}
 
   public confirmarCompra(): void {
-    console.log(this.formulario);
+    let pedido: Pedido = new Pedido(
+      this.formulario.value.endereco,
+      this.formulario.value.numero,
+      this.formulario.value.complemento,
+      this.formulario.value.formaPagamento
+    );
+    this.ordemCompraService.efetivarCompra(pedido).subscribe((idPedido: number) => {
+      this.idPedidoCompra = idPedido;
+    });
   }
 }

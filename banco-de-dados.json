@@ -225,6 +225,13 @@
       "numero": "43",
       "formaPagamento": "debito",
       "id": 6
+    },
+    {
+      "endereco": "qwert",
+      "numero": "1",
+      "complemento": null,
+      "formaPagamento": "debito",
+      "id": 7
     }
   ]
 }
